@@ -8,8 +8,9 @@ load_dotenv()
 
 SEASON = int(os.getenv("SEASON"))
 GCS_BUCKET = os.getenv("GCS_BUCKET", "").strip()
-GCS_MEDAL = os.getenv("GCS_MEDAL", "").strip()
-BLOB_FETCH = f"{GCS_MEDAL}/season={SEASON}/session.parquet"
+GCS_MEDAL_FETCH = os.getenv("GCS_MEDAL_FETCH", "").strip()
+GCS_MEDAL_PUSH = os.getenv("GCS_MEDAL_PUSH", "").strip()
+BLOB_FETCH = f"{GCS_MEDAL_FETCH}/season={SEASON}/session.parquet"
 BLOB_PUSH = f"silver/season={SEASON}/session.parquet"
 
 def upload_parquet(df, bucket, blob_path, client):
