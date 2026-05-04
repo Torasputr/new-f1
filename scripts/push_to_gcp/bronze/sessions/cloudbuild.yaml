@@ -1,0 +1,17 @@
+substitutions:
+  _REGION: asia-southeast2
+  _REPOSITORY: newf1
+  _IMAGE_NAME: bronze-sessions
+
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - -f
+      - scripts/push_to_gcp/bronze/sessions/Dockerfile
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:latest
+      - .
+
+images:
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:latest
